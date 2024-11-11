@@ -1,0 +1,25 @@
+{
+  "name": "spriebsch/ipc",
+  "description": "IPC 2024 Code example",
+  "scripts": {
+    "post-autoload-dump": "@generate-autoloader",
+    "generate-autoloader": [
+      "tools/phpab --output src/autoload.php src"
+    ],
+    "test": [
+      "@generate-autoloader",
+      "tools/phpunit"
+    ],
+    "code-coverage": [
+      "rm -rf build/code-coverage",
+      "@putenv XDEBUG_MODE=coverage",
+      "tools/phpunit --coverage-html build/code-coverage"
+    ],
+    "path-coverage": [
+      "rm -rf build/code-coverage",
+      "@putenv XDEBUG_MODE=coverage",
+      "tools/phpunit --coverage-html build/code-coverage --path-coverage"
+    ],
+    "show-coverage": "gio open build/code-coverage/index.html"
+  }
+}
